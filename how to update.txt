@@ -1,0 +1,21 @@
+cd /Users/john/Downloads/FT/ck
+
+git init
+git add .
+git commit -am "Nth pages commit"
+git remote add origin https://github.com/UNFPAmaldives/ck.git
+git push -u origin master
+git add dist && git commit -m "Initial dist subtree commit"
+git subtree push --prefix dist origin gh-pages
+
+#to update app:
+cd /Users/john/downloads/ft
+git commit -am "Nth pages commit"
+git push -u origin master
+
+#to update gh-pages:
+git commit -am "Nth pages commit"
+git subtree push --prefix dist origin gh-pages
+
+
+#git push -u origin gh-pages

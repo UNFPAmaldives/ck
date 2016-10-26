@@ -1,0 +1,19 @@
+cd /Users/john/Documents/UNFPA-Maldives/MPop/content/Infographics/cardkit
+git init
+git add .
+git commit -am "Nth pages commit"
+git remote add origin https://github.com/UNFPAmaldives/ft.git
+git push -u origin master
+git add dist && git commit -m "Initial dist subtree commit"
+git subtree push --prefix dist origin gh-pages
+
+to update app:
+cd /Users/john/Documents/UNFPA-Maldives/MPop/content/Infographics/ft
+git commit -am "Nth pages commit"
+git push -u origin master
+
+to update dh-pages:
+git commit -am "Nth pages commit"
+git subtree push --prefix dist origin gh-pages
+
+### 2016 [John Zuwasti Curran](https://twitter.com/gonow), Strategic Advocacy & Innovative Partnerships Adviser, [UNFPA, Maldives Country Office](http://maldives.unfpa.org)

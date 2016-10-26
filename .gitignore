@@ -1,0 +1,10 @@
+node_modules
+.tmp
+.sass-cache
+.idea
+bower_components/*
+.DS_Store
+npm-debug.log
+
+!bower_components/saveSvgAsPng
+!bower_components/angulartics

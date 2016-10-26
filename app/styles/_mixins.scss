@@ -1,0 +1,28 @@
+@mixin inline-list {
+	letter-spacing: -4px;
+	list-style-type: none;
+	margin: 0; padding: 0;
+
+	li {
+		letter-spacing: normal;
+		display: inline-block;
+	}
+}
+
+@mixin button($background-color, $color) {
+	padding: 5px 10px;
+	background: $background-color;
+	box-shadow: 0px 2px 7px darken($background-color, 20%);
+
+	border: 0px; outline: 0px;
+	-webkit-appearance: none;
+
+	font-family: $font-family; font-size: 1em;
+	color: $color;
+	cursor: pointer;
+	margin: 5px 0 8px;
+
+	&:hover {
+		background: lighten($background-color, 10%);
+	}
+}

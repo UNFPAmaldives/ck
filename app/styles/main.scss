@@ -1,0 +1,120 @@
+@import "colors";
+@import "settings";
+@import "mixins";
+@import "reset";
+@import "login";
+@import "fonts";
+// bower:scss
+// endbower
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+
+
+html {
+  background-color: $pink-tint1;
+}
+
+// Body
+body {
+  font-family: $font-family;
+  font-size: $font-size;
+  margin: 0px auto;
+  padding: 0 0 0px;
+  max-width: 1200px;
+  min-height: 100vh;
+  box-shadow: 0px 0px 15px $grey-tint2;
+  background-color: $white;
+  // overflow: hidden;
+}
+
+//Textarea
+textarea {}
+::-moz-selection {
+    background: #FEA232;
+    color: #fff;
+    text-shadow: none;
+}
+::selection {
+    background: #FEA232;
+    color: #fff;
+    text-shadow: none;
+}
+
+// Links
+a {
+  text-decoration: none;
+}
+
+// Buttons
+.button {
+  @include button($primary-color, #FFFFFF);
+
+  &.button-danger {
+    @include button($danger-color, #FFFFFF);
+  }
+
+  &.button-success {
+    @include button($success-color, #FFFFFF);
+  }
+}
+
+.pull-right {
+	float: right;
+}
+
+// Header
+@import "header";
+
+// Body
+@import "body";
+
+// Footer
+@import "footer";
+
+// SVGs
+#svg, #snap-svg {
+  [draggable="true"] {
+    cursor: move;
+  }
+
+  [draggablex="true"] {
+    cursor: ew-resize;
+  }
+
+  [draggabley="true"] {
+    cursor: ns-resize;
+  }
+
+  [draggablex="true"][draggabley="true"] {
+    cursor: move;
+  }
+}
+
+#filters-svg {
+}
+
+// Dropzone
+.dropzone {
+  border: 2px dashed $grey-tint1;
+  width: 100%;
+  height: 200px;
+  position: relative;
+  margin: 0 0 10px;
+
+  &:before {
+    content: 'Drop your image here';
+    color: $grey-tint1;
+    font-size: 2em;
+    position: absolute;
+    top: 60px; left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  &.drag-over-accept {
+    background: #eaeaea;
+  }
+}

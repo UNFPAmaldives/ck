@@ -1,0 +1,26 @@
+div.svg {
+	width: 50%;
+	max-width: 580px;
+	padding: 0 0 0px;
+
+	&.fixed {
+		position: fixed;
+		top: 20px;
+		height: 90%;
+	}
+
+	@import "card";
+
+	@import "config";
+
+	@media screen and (max-width: 828px) {
+		width: 100%;
+		max-width: 100%;
+
+		&.fixed {
+			position: relative;
+			top: auto;
+			height: auto;
+		}
+	}
+}

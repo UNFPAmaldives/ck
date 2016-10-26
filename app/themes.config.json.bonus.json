@@ -1,0 +1,335 @@
+  {
+    "name": "Weekend Life & Arts",
+    "xrefText": "FTWeekend",
+    "background": "#fff1e0",
+    "headline": "#333333",
+    "xrefBackground": "#92288f",
+    "quote": "#333333",
+    "highlightColor": "#cc0033",
+    "xref": "#ffffff",
+    "headlineFont": "financierdisplayweb",
+    "creditFont": "metricweb",
+    "xrefFont": "metricweb",
+    "images": {
+      "logoSrc": "logoSrc",
+      "logoAltSrc": "logoAltSrc",
+      "headshotSrc": "headshotSrc",
+      "bookmark": "bookmark",
+      "graphSrc": "graphSrc",
+      "graphWideSrc": "graphWideSrc",
+      "promoSrc": "promoSrc",
+      "weekendSrc": "weekendSrc",
+      "illustrationSrc": "illustrationSrc",
+      "pullquoteSrc": "pullquoteSrc"
+    }
+  },
+  {
+    "name": "Weekend House & Home",
+    "xrefText": "FTWeekend",
+    "background": "#fff1e0",
+    "headline": "#333333",
+    "xrefBackground": "#09a25c",
+    "quote": "#333333",
+    "highlightColor": "#cc0033",
+    "xref": "#ffffff",
+    "headlineFont": "financierdisplayweb",
+    "creditFont": "metricweb",
+    "xrefFont": "metricweb",
+    "images": {
+      "logoSrc": "logoSrc",
+      "logoAltSrc": "logoAltSrc",
+      "headshotSrc": "headshotSrc",
+      "bookmark": "bookmark",
+      "graphSrc": "graphSrc",
+      "graphWideSrc": "graphWideSrc",
+      "promoSrc": "promoSrc",
+      "weekendSrc": "weekendSrc",
+      "illustrationSrc": "illustrationSrc",
+      "pullquoteSrc": "pullquoteSrc"
+    }
+  },
+  {
+    "name": "Money",
+    "xrefText": "FTMoney",
+    "background": "#fff1e0",
+    "headline": "#333333",
+    "xrefBackground": "#cc0033",
+    "quote": "#333333",
+    "highlightColor": "#cc0033",
+    "xref": "#ffffff",
+    "headlineFont": "financierdisplayweb",
+    "creditFont": "metricweb",
+    "xrefFont": "metricweb",
+    "images": {
+      "logoSrc": "logoSrc",
+      "logoAltSrc": "logoAltSrc",
+      "headshotSrc": "headshotSrc",
+      "bookmark": "bookmark",
+      "graphSrc": "graphSrc",
+      "graphWideSrc": "graphWideSrc",
+      "promoSrc": "promoSrc",
+      "weekendSrc": "weekendSrc",
+      "illustrationSrc": "illustrationSrc",
+      "pullquoteSrc": "pullquoteSrc"
+    }
+  },
+  {
+    "name": "Weekend Magazine",
+    "xrefText": "FT Weekend Magazine",
+    "background": "#fff1e0",
+    "headline": "#333333",
+    "xrefBackground": "#0e6dcc",
+    "quote": "#333333",
+    "highlightColor": "#cc0033",
+    "xref": "#ffffff",
+    "headlineFont": "financierdisplayweb",
+    "creditFont": "metricweb",
+    "xrefFont": "metricweb",
+    "images": {
+      "logoSrc": "logoSrc",
+      "logoAltSrc": "logoAltSrc",
+      "headshotSrc": "headshotSrc",
+      "bookmark": "bookmark",
+      "graphSrc": "graphSrc",
+      "graphWideSrc": "graphWideSrc",
+      "promoSrc": "promoSrc",
+      "weekendSrc": "weekendSrc",
+      "illustrationSrc": "illustrationSrc",
+      "pullquoteSrc": "pullquoteSrc"
+    }
+  },
+,          
+  {
+    "name": "SWOP",
+    "background": "#eeeeee",
+    "headline": "#595959",
+    "xrefBackground": "#2D5C9C",
+    "quote": "#595959",
+    "highlightColor": "#cc0033",
+    "xref": "#ffffff",
+    "headlineFont": "unfpabold, serif",
+    "creditFont": "eureka-bold, sans-serif",
+    "xrefFont": "unfpatext, sans-serif",
+    "isNikkei": true,
+    "images": {
+      "logoSrc": "nikkeiAsianReviewLogoRectSrc",
+      "logoWideSrc": "nikkeiAsianReviewLogoWideSrc",
+      "logoAltSrc": "nikkeiAsianReviewLogoTransparentSrc",
+      "headshotSrc": "headshotSrc",
+      "bookmark": "bookmark",
+      "graphSrc": "graphSrc",
+      "graphWideSrc": "graphWideSrc",
+      "promoSrc": "promoSrc",
+      "weekendSrc": "weekendSrc",
+      "illustrationSrc": "illustrationSrc",
+      "pullquoteSrc": "pullquoteSrc"
+    }
+  }  
+
+          }, {
+          name: 'UNFPA 1-Color -- Co-sponsored Card',
+          elements: function ($scope) {
+            return [{
+              name: 'Background Colour',
+              type: 'rect',
+              controlsOrder: 10,
+              height: function () {
+                return $scope.size.height;
+              },
+              width: function () {
+                return $scope.size.width;
+              },
+              fill: function () {
+                return $scope.theme.background;
+              }
+            }, {
+              name: 'Recipe Image',
+              type: 'image',
+              width: function () {
+                return $scope.size.width * 0.6;
+              },
+              controlsOrder: 1,
+              height: function () {
+                var h;
+                if (typeof this.width === 'string') {
+                  h = +this.width;
+                } else {
+                  h = this.width();
+                }
+                return h;
+              },
+              src: '',
+              opacity: 1,
+              x: '0%',
+              y: '0%',
+              preserveAspectRatio: 'xMinYMin meet',
+              draggable: true,
+              defaultFilter: '',
+              editable: {
+                src: true,
+                width: true,
+                filters: [
+                  'Grayscale'
+                ],
+              }
+            }, {
+              name: 'Cosponsor Logo',
+              type: 'image',
+              width: function () {
+                return $scope.size.width * 0.6;
+              },
+              controlsOrder: 1,
+              height: function () {
+                var h;
+                if (typeof this.width === 'string') {
+                  h = +this.width;
+                } else {
+                  h = this.width();
+                }
+                return h;
+              },
+              src: '',
+              opacity: 1,
+              x: '0%',
+              y: '0%',
+              preserveAspectRatio: 'xMinYMin meet',
+              draggable: true,
+              defaultFilter: '',
+              editable: {
+                src: true,
+                width: true,
+                filters: [
+                  'Grayscale'
+                ],
+              }              
+            }, {
+              name: 'Side Explanation Background',
+              type: 'rect',
+              controlsOrder: 10,
+              height: function () {
+                return $scope.size.height;
+              },
+              width: function () {
+                return $scope.size.width * 0.3;
+              },
+              y: '0%',
+              x: function () {
+                return $scope.size.width - this.width();
+              },
+              fill: 'rgb(67,20,95)'
+            }, {
+              name: 'Logo',
+              type: 'text',
+              text: 'UNFPA',
+              fill: 'white',
+              fontSize: function () {
+                return ($scope.size.name === 'Twitter') ? 28 : 22;
+              },
+              fontFamily: function () {
+                return $scope.theme.headlineFont;
+              },
+              textAnchor: 'start',
+              x: function () {
+                return $scope.size.width - ($scope.size.gridSize * 11);
+              },
+              y: function () {
+                return ($scope.size.gridSize * 2);
+              },
+              fontWeight: 600,
+              draggable: false
+            }, {
+              name: 'Reference Text',
+              type: 'text',
+              text: 'Read the story at\nunfpa.org/XXX',
+              controlsOrder: 3,
+              fill: function () {
+                return $scope.theme.xref;
+              },
+              fontSize: function () {
+                return ($scope.size.name === 'Twitter') ? 18 : 14;
+              },
+              fontFamily: function () {
+                return $scope.theme.xrefFont;
+              },
+              textAnchor: 'start',
+              x: function () {
+                var w = $scope.size.width;
+                return (w - w * 0.3) + $scope.size.gridSize;
+              },
+              y: function () {
+                return $scope.size.height - ($scope.size.gridSize * 2 + 2);
+              },
+              fontWeight: 500,
+              draggable: true,
+              editable: {
+                text: true
+              }
+            }, {
+              name: 'Recipe Name',
+              type: 'text',
+              text: 'Steak and\nkidney pudding',
+              controlsOrder: 2,
+              fill: function () {
+                return $scope.theme.xref;
+              },
+              fontSize: function () {
+                return ($scope.size.name === 'Twitter') ? 24 : 18;
+              },
+              fontFamily: 'metricweb',
+              textAnchor: 'start',
+              width: function () {
+                return $scope.size.gridSize * 12;
+              },
+              x: function () {
+                var w = $scope.size.width;
+                return (w - $scope.size.gridSize * 11);
+              },
+              y: function () {
+                return $scope.size.gridSize * 6.8;
+              },
+              fontWeight: 400,
+              draggable: true,
+              editable: {
+                text: true,
+                fontSize: {
+                  'Small (18px)': 18,
+                  'Standard (24px)': 24,
+                  'Large (34px)': 34,
+                }
+              },
+            }, {
+              name: 'Author Name',
+              type: 'text',
+              text: 'John Curran',
+              controlsOrder: 2,
+              fill: function () {
+                return $scope.theme.xref;
+              },
+              fontSize: function () {
+                return ($scope.size.name === 'Twitter') ? 24 : 18;
+              },
+              fontFamily: 'eureka-bold',
+              fontStyle: 'italic',
+              textAnchor: 'start',
+              width: function () {
+                return $scope.size.gridSize * 12;
+              },
+              x: function () {
+                var w = $scope.size.width;
+                return (w - $scope.size.gridSize * 11);
+              },
+              y: function () {
+                return $scope.size.gridSize * 5.25;
+              },
+              fontWeight: 300,
+              draggable: true,
+              editable: {
+                text: true,
+                fontSize: {
+                  'Small (18px)': 18,
+                  'Standard (24px)': 24,
+                  'Large (34px)': 34,
+                }
+              },
+            }];
+          }
