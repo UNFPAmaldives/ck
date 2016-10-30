@@ -21,7 +21,8 @@ angular.module('cardkitApp')
           width: 650,
           height: 320,
           gridSize: 16.25,
-          fill: 'transparent'
+          fill: 'transparent',
+          default: true
         },
         {
           name: 'Facebook',
@@ -30,11 +31,17 @@ angular.module('cardkitApp')
           gridSize: 12.15
         },
         {
+          name: 'Instagram',
+          width: 640,
+          height: 640,
+          gridSize: 32
+        },
+        {
           name: 'UNFPA.org Article',
           width: 600,
           height: 295,
           gridSize: 15
-        },
+        },        
  /*       {
           name: 'Square',
           width: 450,
@@ -71,15 +78,39 @@ angular.module('cardkitApp')
       $scope.$broadcast('resetSvg');
     }
 
+    // Configure themes, set default
     if(typeof $scope.config.themes !== 'undefined') {
-      $scope.theme = ($scope.config.themes.length > 1) ? null : $scope.config.themes[0];
+      var defaultTheme = $filter('filter')($scope.config.themes, {
+        default: true
+      }, true)[0];
+      if(defaultTheme) {
+        $scope.theme = defaultTheme;
+      } else {
+        $scope.theme = ($scope.config.themes.length > 1) ? null : $scope.config.themes[0];
+      }
     }
 
-    if (typeof $scope.config.templates !== 'undefined') {
-      $scope.config.svg.elements = ($scope.config.templates.length > 1) ? null : $scope.config.template[0]($scope);
+    // Configure templates, set default
+    if(typeof $scope.config.template !== 'undefined') {
+      var defaultTemplate = $filter('filter')($scope.config.template, {
+        default: true
+      }, true)[0];
+      if(defaultTemplate) {
+        $scope.template = defaultTemplate;
+      } else {
+        $scope.template = ($scope.config.templates.length > 1) ? null : $scope.config.template[0];
+      }
     }
 
-    $scope.size = ($scope.config.sizes.length > 1) ? null : $scope.config.sizes[0];
+    // Configure sizes, set default
+    var defaultSize = $filter('filter')($scope.config.sizes, {
+      default: true
+    }, true)[0];
+    if(defaultSize) {
+      $scope.size = defaultSize;
+    } else {
+      $scope.size = ($scope.config.sizes.length > 1) ? null : $scope.config.sizes[0];
+    }
 
     $scope.$watch('theme', function() {
       $scope.$broadcast('changeTheme');

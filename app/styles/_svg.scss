@@ -1,6 +1,7 @@
 div.svg {
 	width: 50%;
 	max-width: 580px;
+	overflow: auto;
 	padding: 0 0 0px;
 
 	&.fixed {

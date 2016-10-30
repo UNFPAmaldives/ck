@@ -142,7 +142,7 @@ angular.module('cardkitApp')
             }, {
               name: 'Cross Reference Text',
               type: 'text',
-              text: 'Read more at: Insert name here',
+              text: 'Read more at: unfpa.org/adolescent-pregnancy',
               controlsOrder: 3,
               fill: function () {
                 return $scope.theme.xref;
@@ -174,7 +174,7 @@ angular.module('cardkitApp')
             }, {
               name: 'Credit',
               type: 'text',
-              text: 'CREDIT: INSERT NAME HERE',
+              text: 'YORIKO YASUKAWA\nDirector, Asia & the Pacific',
               controlsOrder: 2,
               fill: function () {
                 return $scope.theme.quote;
@@ -191,7 +191,7 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.height - $scope.size.gridSize * 5;
+                return $scope.size.height - $scope.size.gridSize * 6;
               },
               fontWeight: 500,
               draggable: true,
@@ -219,9 +219,8 @@ angular.module('cardkitApp')
             }, {
               name: 'Headline',
               type: 'text',
-              text: 'Add text or a quote here.\n' +
-              'You can drag it around.\n\n' +
-              'More text can go here',
+              text: 'Empowerment means guaranteeing\ngirls and women full, unfettered\naccess to family planning\nsupplies and services' +
+              '',
               fill: function () {
                 return $scope.theme.quote;
               },
@@ -257,7 +256,7 @@ angular.module('cardkitApp')
                 },                 
               },
             }];
-          }
+          },
         }, {
           name: 'Quote Big',
           elements: function ($scope) {
@@ -303,9 +302,6 @@ angular.module('cardkitApp')
               defaultFilter: '',
               editable: {
                 width: true,
-                filters: [
-                  'Grayscale'
-                ],
               }
             }, {              
               name: 'Cross Reference Background',
@@ -351,7 +347,7 @@ angular.module('cardkitApp')
             }, {
               name: 'Cross Reference Text',
               type: 'text',
-              text: 'Read more at: Insert name here',
+              text: 'Read more at: unfpa.org/maternal-health',
               controlsOrder: 3,
               fill: function () {
                 return $scope.theme.xref;
@@ -384,13 +380,13 @@ angular.module('cardkitApp')
             }, {
               name: 'Credit',
               type: 'text',
-              text: 'OGDEN NASH',
+              text: 'BABATUNDE OSOTIMEHIN',
               controlsOrder: 2,
               fill: function () {
                 return $scope.theme.quote;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 22 : 16;
+                return ($scope.size.name === 'Twitter') ? 23 : 17;
               },
               fontFamily: function () {
                 return $scope.theme.creditFont;
@@ -410,6 +406,8 @@ angular.module('cardkitApp')
                 text: true,
                 fontSize: {
                   'Small (16px)': 16,
+                  'Smallish (18px)': 18,
+                  'Medium (20px': 20,
                   'Large (22px)': 22,
                   'Larger (24px)': 24,
                   'X-Large (26px)': 26,
@@ -430,8 +428,8 @@ angular.module('cardkitApp')
               name: 'Quote',
               type: 'text',
 
-              text: 'Big quote here\n' +
-              'Can move',
+              text: 'No woman should\ndie giving life' +
+              '',
               fill: function () {
                 return $scope.theme.quote;
               },
@@ -556,7 +554,7 @@ angular.module('cardkitApp')
             }, {
               name: 'Cross Reference Text',
               type: 'text',
-              text: 'Read more at: Insert name here',
+              text: 'Read more at: unfpa.org/engaging-men-boys',
               controlsOrder: 4,
               fill: function () {
                 return $scope.theme.xref;
@@ -582,7 +580,7 @@ angular.module('cardkitApp')
             }, {
               name: 'Credit',
               type: 'text',
-              text: 'SHAKESPEARE\nMuch Ado About Nothing',
+              text: 'BABATUNDE OSOTIMEHIN\nExecutive Director',
               controlsOrder: 3,
               fill: function () {
                 return $scope.theme.quote;
@@ -627,7 +625,7 @@ angular.module('cardkitApp')
             }, {
               name: 'Headline',
               type: 'text',
-              text: 'Friendship is constant\nin all other things save in\nthe office and affairs of\nlove: Therefore, all hearts\nin love use their own',
+              text: 'How do we socialize\nboys to understand:\nWomen are engines of\ndevelopment, the soul\nof communities?',
               fill: function () {
                 return $scope.theme.quote;
               },
@@ -753,7 +751,7 @@ angular.module('cardkitApp')
             }, {
               name: 'Cross Reference Text',
               type: 'text',
-              text: 'Read more at: Insert name here',
+              text: 'Read more at: unfpa.org/child-marriage',
               controlsOrder: 3,
               fill: function () {
                 return $scope.theme.xref;
@@ -785,7 +783,7 @@ angular.module('cardkitApp')
             }, {
               name: 'Explanatory Text',
               type: 'text',
-              text: 'Add text here - you can also drag it\naround. It can be one line or several.',
+              text: 'girls in developing countries is\nmarried before reaching age 18.',
               controlsOrder: 2,
               fill: function () {
                 return $scope.theme.quote;
@@ -825,7 +823,7 @@ angular.module('cardkitApp')
             }, {
               name: 'Big Number',
               type: 'text',
-              text: 'Number',
+              text: '1 in 3',
               fill: function () {
                 return $scope.theme.highlightColor;
               },
@@ -1001,13 +999,13 @@ angular.module('cardkitApp')
             }, {
               name: 'Explanatory Text',
               type: 'text',
-              text: 'Add text here.\n\nYou can also\ndrag it around.\n\nIt can be one\nline or several.',
+              text: 'Youth face\nlife-changing\ndecisions about\nreproductive\nhealth.\n\nThey deserve to\nbe prepared.',
               controlsOrder: 2,
               fill: function () {
                 return $scope.theme.xref;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 24 : 18;
+                return ($scope.size.name === 'Twitter') ? 21 : 17;
               },
               fontFamily: function () {
                 return $scope.theme.promoFont;
@@ -1032,6 +1030,8 @@ angular.module('cardkitApp')
                   'X-Small (12px)': 12,
                   'Smaller (14px)': 14,
                   'Smallish (16px)': 16,
+                  'Twitter Default (17px)': 17,
+                  'Facebook Default (21px)': 21,
                   'Small (18px)': 18,
                   'Medium (20px)': 20,
                   'Standard (24px)': 24,
@@ -1150,7 +1150,7 @@ angular.module('cardkitApp')
             }, {
               name: 'Reference Text',
               type: 'text',
-              text: 'unfpa.org/\nxxxxxx',
+              text: '#Midwives\nMatter',
               controlsOrder: 3,
               fill: function () {
                 return $scope.theme.xref;
@@ -1178,13 +1178,13 @@ angular.module('cardkitApp')
             }, {
               name: 'Explanatory Text',
               type: 'text',
-              text: 'Add text here.\n\nYou can drag\nit around.\n\nIt can be one\nline or several.',
+              text: 'Every day,\nmore than\n800 women\ndie from\ncomplications\nof childbirth\nand pregnancy',
               controlsOrder: 2,
               fill: function () {
                 return $scope.theme.xref;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 24 : 18;
+                return ($scope.size.name === 'Twitter') ? 22 : 18;
               },
               fontFamily: function () {
                 return $scope.theme.promoFont;
@@ -1209,8 +1209,9 @@ angular.module('cardkitApp')
                   'X-Small (12px)': 12,
                   'Smaller (14px)': 14,
                   'Smallish (16px)': 16,
-                  'Small (18px)': 18,
                   'Medium (20px)': 20,
+                  'Default Twitter (22px)': 22,
+                  'Default Facebook (18px)': 18,
                   'Standard (24px)': 24,
                   'Standard Plus (28px)': 28,
                   'Large (34px)': 34,
@@ -1352,13 +1353,13 @@ angular.module('cardkitApp')
             }, {
               name: 'Explanatory Text',
               type: 'text',
-              text: 'Add text here.\n\nYou can drag\nit around.\n\nIt can be one\nline or several.',
+              text: 'What attracts\nmillions of new\nusers to\nfamily planning?\n\nA) rights-based\napproaches\nB) better options\nC) all the above',
               controlsOrder: 2,
               fill: function () {
                 return $scope.theme.xref;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Facebook') ? 14 : 18;
+                return ($scope.size.name === 'Facebook') ? 13 : 17;
               },
               fontFamily: function () {
                 return $scope.theme.promoFont;
@@ -1487,7 +1488,7 @@ angular.module('cardkitApp')
             }, {
               name: 'Cross Reference Text',
               type: 'text',
-              text: 'Promo A please go to unfpa.org/something',
+              text: '#SafeBirthEvenHere',
               controlsOrder: 2,
               fill: function () {
                 return $scope.theme.xref;
@@ -1613,7 +1614,7 @@ angular.module('cardkitApp')
             }, {
               name: 'Explanatory Text',
               type: 'text',
-              text: 'Promo B\nplease go to\nunfpa.org/\nsomething-\ninteresting',
+              text: 'Young\npeople take\nthe lead\nagainst\nZika in\nBrazil',
               controlsOrder: 2,
               fill: function () {
                 return $scope.theme.xref;
@@ -1748,13 +1749,13 @@ angular.module('cardkitApp')
             }, {
               name: 'Explanatory Text',
               type: 'text',
-              text: '“Promo C\nplease go to\nunfpa.org/\nsomething”\n#hashtag here',
+              text: 'Death,\nsex,\nand\nfertility\n\n',
               controlsOrder: 1,
               fill: function () {
                 return $scope.theme.xref;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 24 : 28;
+                return ($scope.size.name === 'Twitter') ? 32 : 28;
               },
               fontFamily: function () {
                 return $scope.theme.promoFont;
@@ -1783,8 +1784,9 @@ angular.module('cardkitApp')
                   'Medium-ish (22px)': 22,
                   'Medium (20px)': 20,
                   'Standard (24px)': 24,
-                  'Standard Plus (28px)': 28,
+                  'Facebook Default (28px)': 28,
                   'Large (34px)': 34,
+                  'Twitter Default (34px)': 34,
                   'X-Large (36px)': 36,
                   'XX-Large (44px)': 44,
                 },
@@ -1795,9 +1797,9 @@ angular.module('cardkitApp')
                 },                
               },
             }, {
-              name: 'Author Name',
+              name: 'More Text',
               type: 'text',
-              text: 'More words here',
+              text: 'One UN agency\ndoes it all.',
               controlsOrder: 2,
               fill: function () {
                 return $scope.theme.xref;
@@ -1980,7 +1982,7 @@ angular.module('cardkitApp')
             }, {
               name: 'Credit',
               type: 'text',
-              text: 'Name here in caps',
+              text: 'Cash moves everything around me',
               controlsOrder: 3,
               fill: function () {
                 return $scope.theme.quote;
@@ -2079,6 +2081,324 @@ angular.module('cardkitApp')
               },
             }];
           }
+        }, {          
+          name: 'Event Announcement',
+          elements: function ($scope) {
+            return [{
+              name: 'Background Colour',
+              type: 'rect',
+              controlsOrder: 17,
+              height: function () {
+                return $scope.size.height;
+              },
+              width: function () {
+                return $scope.size.width;
+              },
+              fill: function () {
+                return $scope.theme.background;
+              },
+              editable: {
+                fill: 'picker'
+              }
+            }, {
+              name: 'Image or CoSponsor Logo (Optional)',
+              type: 'image',
+              width: function () {
+                return $scope.size.width * 0.6;
+              },
+              controlsOrder: 13,
+              height: function () {
+                var h;
+                if (typeof this.width === 'string') {
+                  h = +this.width;
+                } else {
+                  h = this.width();
+                }
+                return h;
+              },
+              src: '',
+              opacity: 1,
+              x: '0%',
+              y: '0%',
+              preserveAspectRatio: 'xMinYMin meet',
+              draggable: true,
+              showHoverArea: true,
+              defaultFilter: '',
+              editable: {
+                src: true,
+                width: true,
+                filters: [
+                  'Grayscale'
+                ],
+              }                         
+            }, {
+              name: 'Header Background',
+              type: 'rect',
+              controlsOrder: 15,
+              height: function () {
+                return $scope.size.gridSize * 3;
+              },
+              width: function () {
+                return $scope.size.width;
+              },
+              y: 0,
+              fill: function () {
+                return $scope.theme.eventColor;
+              },
+              draggable: true,
+              editable: {
+                fill: 'picker'
+              }            
+            }, {
+              name: 'Bell',
+              type: 'image',
+              controlsOrder: 16,
+              width: function () {
+                return $scope.size.gridSize;
+              },
+              height: function () {
+                return $scope.size.gridSize * 2;
+              },
+              src: function () {
+                return $scope.theme.images.bell;
+              },
+              opacity: 1,
+              x: function () {
+                return $scope.size.width - (this.width() + $scope.size.gridSize);
+              },
+              y: function () {
+                return (($scope.size.gridSize * 3.5) - this.height()) / 2;
+              },
+              preserveAspectRatio: 'xMinYMin meet',
+              draggable: true,                          
+            }, {
+              name: 'Banner Text',
+              type: 'text',
+              text: 'Event Announcement',
+              textTransform: 'uppercase',
+              controlsOrder: 1,
+              fill: function () {
+                return $scope.theme.event;
+              },
+              fontSize: function () {
+                return ($scope.size.name === 'Twitter') ? 24 : 18;
+              },
+              fontFamily: function () {
+                return $scope.theme.xrefFont;
+              },
+              textAnchor: 'start',
+              x: function () {
+                return $scope.size.gridSize;
+              },
+              y: function () {
+                return $scope.size.gridSize * 2;
+              },
+              fontWeight: 500,
+              draggable: true,
+              showHoverArea: true,
+              editable: {
+                text: true,
+                fontSize: {
+                  'Small (18px)': 18,
+                  'Standard (24px)': 24,
+                  'Large (28px)': 28,
+                },               
+                fill: 'picker'
+              },
+            }, {
+              name: 'Logo',
+              type: 'image',
+              controlsOrder: 13,
+              width: function () {
+                return templateHelper.logo.width($scope);
+              },
+              height: function () {
+                return templateHelper.logo.height($scope);
+              },
+              src: function () {
+                return $scope.theme.images.logoSrc;
+              },
+              opacity: 1,
+              x: function () {
+                return templateHelper.logo.x($scope);
+              },
+              y: function () {
+                var paddingTop = $scope.theme.isNikkei ? 0 : $scope.size.gridSize;
+                return $scope.size.height - (this.height($scope) + paddingTop * -1.1);
+              },
+              preserveAspectRatio: 'xMinYMin meet',
+              draggable: {
+                x: true,
+                y: true
+              },
+              editable: {
+                src: {
+                  'UNFPA Color': $scope.theme.images.logoSrc,
+                  'UNFPA Dark': $scope.theme.images.logoBW,
+                  'UNFPA White': $scope.theme.images.logoWhite,
+                  'UNFPA Grey': $scope.theme.images.logoAltSrc,
+                  'SWOP': $scope.theme.images.nikkeiAsianReviewLogoWideSrc,
+                  'Global Goals': $scope.theme.images.GlobalgoalsSrc,
+                  'Global Goals (White)': $scope.theme.images.GlobalgoalsSrcWhite,
+                },                 
+                width: true,
+              }                           
+            }, {
+              name: 'When',
+              type: 'text',
+              text: '9:30 a.m. New York time, UTC -4',
+              controlsOrder: 3,
+              fill: function () {
+                return $scope.theme.quote;
+              },
+              fontSize: function () {
+                return ($scope.size.name === 'Twitter') ? 22 : 18;
+              },
+              fontFamily: function () {
+                return $scope.theme.eventFont;
+              },
+              textAnchor: 'start',
+              textTransform: 'none',
+              x: function () {
+                return $scope.size.gridSize;
+              },
+              y: function () {
+                return $scope.size.height - $scope.size.gridSize * 10;
+              },
+              fontWeight: 500,
+              draggable: true,
+              showHoverArea: true,
+              editable: {
+                text: true,
+                fontSize: {
+                  'Small (18px)': 18,
+                  'Large (22px)': 22,
+                },
+                textAnchor: {
+                  'left': 'start',
+                  'center': 'middle',
+                  'right': 'end',
+                },                 
+                fill: 'picker'
+              },
+            }, {
+              name: 'Event details',
+              type: 'text',
+              text: 'Got a question for the ED? You can submit them now on Voices.',
+              controlsOrder: 4,
+              fill: function () {
+                return $scope.theme.highlightColor;
+              },
+              fontSize: function () {
+                return ($scope.size.name === 'Twitter') ? 18 : 14;
+              },
+              fontFamily: function () {
+                return $scope.theme.creditFont;
+              },
+              textAnchor: 'start',
+              textTransform: 'none',
+              x: function () {
+                return $scope.size.gridSize;
+              },
+              y: function () {
+                return $scope.size.height - $scope.size.gridSize * 3;
+              },
+              fontWeight: 500,
+              draggable: true,
+              showHoverArea: true,
+              editable: {
+                text: true,
+                fontSize: {
+                  'Small (14px)': 14,
+                  'Standard (18px)': 18,
+                  'Large (22px)': 22,
+                },
+                textAnchor: {
+                  'left': 'start',
+                  'center': 'middle',
+                  'right': 'end',
+                },                 
+                fill: 'picker'
+              },
+            }, {
+              name: 'Where',
+              type: 'text',
+              text: 'Meet us in the Orange Café, \nor watch the livestream on Voices',
+              controlsOrder: 3,
+              fill: function () {
+                return $scope.theme.quote;
+              },
+              fontSize: function () {
+                return ($scope.size.name === 'Twitter') ? 18 : 14;
+              },
+              fontFamily: function () {
+                return $scope.theme.eventFont;
+              },
+              textAnchor: 'start',
+              textTransform: 'none',
+              x: function () {
+                return $scope.size.gridSize;
+              },
+              y: function () {
+                return $scope.size.height - $scope.size.gridSize * 7;
+              },
+              fontWeight: 500,
+              draggable: true,
+              showHoverArea: true,
+              editable: {
+                text: true,
+                fontSize: {
+                  'Small (14px)': 14,
+                  'Standard (18px)': 18,
+                  'Large (22px)': 22,
+                },
+                textAnchor: {
+                  'left': 'start',
+                  'center': 'middle',
+                  'right': 'end',
+                },                 
+                fill: 'picker'
+              },                  
+            }, {
+              name: 'What',
+              type: 'text',
+              text: 'General Staff Meeting',
+              fill: function () {
+                return $scope.theme.quote;
+              },
+              controlsOrder: 2,
+              fontSize: function () {
+                return ($scope.size.name === 'Twitter') ? 44 : 34;
+              },
+              fontFamily: function () {
+                return $scope.theme.headlineFont;
+              },
+              textAnchor: 'start',
+              x: function () {
+                return $scope.size.gridSize;
+              },
+              y: function () {
+                return $scope.size.gridSize * 6;
+              },
+              fontWeight: 600,
+              draggable: true,
+              showHoverArea: true,
+              editable: {
+                text: true,
+                fontSize: {
+                  'Small (32px)': 32,
+                  'Standard (44px)': 44,
+                  'Large (50px)': 50,
+                },
+                textAnchor: {
+                  'left': 'start',
+                  'center': 'middle',
+                  'right': 'end',
+                },                 
+                fill: 'picker'
+              },
+            }];
+          }          
         }, {
           name: 'UNFPA Co-Sponsored -- Quote With Headshot (Fully Editable)',
           elements: function ($scope) {
@@ -2250,7 +2570,7 @@ angular.module('cardkitApp')
             }, {
               name: 'Credit',
               type: 'text',
-              text: 'Babatunde Osotimehin on why\nObstetric Fistula is Terrible',
+              text: 'Babatunde Osotimehin on the\n#Goal5 target to #EndFGM',
               controlsOrder: 3,
               fill: function () {
                 return $scope.theme.quote;
@@ -2296,7 +2616,8 @@ angular.module('cardkitApp')
             }, {
               name: 'Headline',
               type: 'text',
-              text: 'Friendship is constant\nin all other things save in\nthe office and affairs of\nlove: Therefore, all hearts\nin love use their own',
+              text: 'There is absolutely no\nreason to cut anybody...\n\n'+
+              'I think it’s child abuse.',
               fill: function () {
                 return $scope.theme.quote;
               },
