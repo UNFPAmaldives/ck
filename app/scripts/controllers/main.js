@@ -22,7 +22,6 @@ angular.module('cardkitApp')
           height: 320,
           gridSize: 16.25,
           fill: 'transparent',
-          default: true
         },
         {
           name: 'Facebook',

@@ -556,7 +556,10 @@ angular.module('cardkitApp')
               name: 'Image',
               type: 'image',
               width: function () {
-                return $scope.size.gridSize * 20;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 30;
+                }
+                else return $scope.size.gridSize * 20;
               },
               controlsOrder: 2,
               height: function () {
@@ -569,11 +572,23 @@ angular.module('cardkitApp')
                 return $scope.theme.images.headshotSrc || '';
               },
               opacity: 1,
-              x: function () {
-                return $scope.size.gridSize * 20;
+              x: function () {                                 
+                var w;
+                if (typeof this.width === 'function') {
+                  w = this.width();
+                } else {
+                  w = +this.width;
+                }
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.width - (w + $scope.size.gridSize *-7);
+                }                
+                else return $scope.size.width - (w + $scope.size.gridSize);
               },
               y: function () {
-                return $scope.size.gridSize;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 6;
+                }
+                else return $scope.size.gridSize;
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
@@ -685,7 +700,10 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.height - $scope.size.gridSize * 6;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.height - $scope.size.gridSize * 12;
+                }               
+                else return $scope.size.height - $scope.size.gridSize * 6;
               },
               fontWeight: 500,
               draggable: true,
@@ -713,7 +731,12 @@ angular.module('cardkitApp')
             }, {
               name: 'Headline',
               type: 'text',
-              text: 'How do we socialize\nboys to understand:\nWomen are engines of\ndevelopment, the soul\nof communities?',
+              text: function () {
+                if ($scope.size.name === 'Instagram') {
+                 return 'How do we socialize\nboys to understand:\nWomen are engines\nof development, the\nsoul of communities?';
+                }
+                else return 'How do we socialize\nboys to understand:\nWomen are engines of\ndevelopment, the soul\nof communities?'
+              },              
               fill: function () {
                 return $scope.theme.quote;
               },
@@ -732,7 +755,10 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.gridSize * 3;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 8;
+                }
+                else return $scope.size.gridSize * 3;
               },
               fontWeight: 600,
               draggable: true,
@@ -1570,13 +1596,7 @@ angular.module('cardkitApp')
               }
             }, {
               name: 'Promo Image',
-              type: 'image',
-              y: function () {
-                if ($scope.size.name === 'Instagram') {
-                  return $scope.size.height - ($scope.size.gridSize +3);
-                }
-                else return $scope.size.height - ($scope.size.gridSize);
-              },              
+              type: 'image',          
               width: function () {
                 if ($scope.size.name === 'Instagram') {
                   return $scope.size.width * 1.4;
@@ -1598,6 +1618,7 @@ angular.module('cardkitApp')
               },
               opacity: 1,
               x: '0%',
+              y: '0%',
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
               showHoverArea: true,
