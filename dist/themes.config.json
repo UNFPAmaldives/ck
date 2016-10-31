@@ -16,7 +16,6 @@
     "promoFont": "unfpabold",
     "eventFont": "unfpatext",
     "xrefFont": "unfpabold",
-    "default": true,
     "images": {
       "logoSrc": "logoSrc",
       "logoAltSrc": "logoAltSrc",
@@ -52,7 +51,8 @@
       "MNar": "MNar",
       "MNch": "MNch",
       "MNfr": "MNfr",
-      "MNes": "MNes"
+      "MNes": "MNes",
+      "blank": "blank"
     }
   },  
   {
@@ -107,7 +107,8 @@
       "MNar": "MNar",
       "MNch": "MNch",
       "MNfr": "MNfr",
-      "MNes": "MNes"
+      "MNes": "MNes",
+      "blank": "blank"
     }
   },
   {
@@ -162,7 +163,8 @@
       "MNar": "MNar",
       "MNch": "MNch",
       "MNfr": "MNfr",
-      "MNes": "MNes"
+      "MNes": "MNes",
+      "blank": "blank"
     }
   },
   {
@@ -216,7 +218,8 @@
       "MNar": "MNar",
       "MNch": "MNch",
       "MNfr": "MNfr",
-      "MNes": "MNes"      
+      "MNes": "MNes",
+      "blank": "blank"      
     }
   }, 
   {
@@ -272,7 +275,8 @@
       "MNar": "MNar",
       "MNch": "MNch",
       "MNfr": "MNfr",
-      "MNes": "MNes"
+      "MNes": "MNes",
+      "blank": "blank"
     }
   },
   {
@@ -328,7 +332,8 @@
       "MNar": "MNar",
       "MNch": "MNch",
       "MNfr": "MNfr",
-      "MNes": "MNes"
+      "MNes": "MNes",
+      "blank": "blank"
     }
   },
   {
@@ -384,7 +389,8 @@
       "MNar": "MNar",
       "MNch": "MNch",
       "MNfr": "MNfr",
-      "MNes": "MNes"
+      "MNes": "MNes",
+      "blank": "blank"
     }
   },
     {
@@ -440,7 +446,8 @@
       "MNar": "MNar",
       "MNch": "MNch",
       "MNfr": "MNfr",
-      "MNes": "MNes"
+      "MNes": "MNes",
+      "blank": "blank"
     }
   },        
   {
@@ -496,7 +503,8 @@
       "MNar": "MNar",
       "MNch": "MNch",
       "MNfr": "MNfr",
-      "MNes": "MNes"
+      "MNes": "MNes",
+      "blank": "blank"
     }
   }, 
   {
@@ -552,7 +560,8 @@
       "MNar": "MNar",
       "MNch": "MNch",
       "MNfr": "MNfr",
-      "MNes": "MNes"  
+      "MNes": "MNes",
+      "blank": "blank"
     }
   }
 ]
