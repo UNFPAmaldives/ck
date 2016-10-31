@@ -34,7 +34,7 @@ angular.module('cardkitApp')
           name: 'Instagram',
           width: 640,
           height: 640,
-          gridSize: 32
+          gridSize: 20
         },
         {
           name: 'UNFPA.org Article',

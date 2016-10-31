@@ -18,7 +18,9 @@ var templateHelper = {
   creditFontSize: function ($scope) {
     if ($scope.size.name === 'Twitter') {
       return $scope.theme.isNikkei ? 20 : 20;
-    } else {
+    } else if ($scope.size.name === 'Instagram') {
+      return $scope.template.isQuote ? 20 : 28;    
+    } else {      
       return $scope.theme.isNikkei ? 16 : 16;
     }
   },
@@ -29,6 +31,7 @@ var templateHelper = {
       return $scope.theme.isNikkei ? 22 : 24;
     }
   },
+
   crossReferenceBackground: {
     width: function ($scope) {
       var nikkeiLogoDeduct = $scope.theme.isNikkei ? $scope.size.gridSize * 9 : 0;
@@ -49,6 +52,7 @@ angular.module('cardkitApp')
       $get: function () {
         return ([{
           name: 'Quote',
+          "isQuote": true,          
           elements: function ($scope) {
             return [{
               name: 'Background Colour',
@@ -67,7 +71,10 @@ angular.module('cardkitApp')
               name: 'Pullquote',
               type: 'image',
               width: function () {
-                return $scope.size.gridSize * 10;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 6;
+                }
+                else return $scope.size.gridSize * 10;
               },
               controlsOrder: 4,
               height: function () {
@@ -81,10 +88,16 @@ angular.module('cardkitApp')
               },
               opacity: 0.6,
               x: function () {
-                return $scope.size.gridSize * -1;
+                if ($scope.size.name === 'Instagram') {              
+                  return $scope.size.gridSize * 13.5;
+                }
+                else return $scope.size.gridSize * -1;
               },
               y: function () {
-                return $scope.size.gridSize * -.1;
+                if ($scope.size.name === 'Instagram') {              
+                  return $scope.size.gridSize * 7;
+                }             
+                else return $scope.size.gridSize * -.1;
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
@@ -130,7 +143,10 @@ angular.module('cardkitApp')
                 return templateHelper.logo.x($scope);
               },
               y: function () {
-                return templateHelper.logo.y($scope);
+                if ($scope.size.name === 'Instagram') {              
+                return templateHelper.logo.y($scope) -18;
+              }
+                else return templateHelper.logo.y($scope);
               },
               // x: 500,
               // y: 150,
@@ -142,7 +158,7 @@ angular.module('cardkitApp')
             }, {
               name: 'Cross Reference Text',
               type: 'text',
-              text: 'Read more at: unfpa.org/adolescent-pregnancy',
+              text: 'Read more: unfpa.org/adolescent-pregnancy',
               controlsOrder: 3,
               fill: function () {
                 return $scope.theme.xref;
@@ -158,7 +174,10 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.height - ($scope.size.gridSize);
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.height - ($scope.size.gridSize +3);
+                }
+                else return $scope.size.height - ($scope.size.gridSize);
               },
               fontWeight: 500,
               draggable: true,
@@ -185,14 +204,25 @@ angular.module('cardkitApp')
               fontFamily: function () {
                 return $scope.theme.creditFont;
               },
-              textAnchor: 'start',
+              textAnchor: function () {
+                if ($scope.size.name === 'Instagram') {
+                  return 'middle'; 
+                }                
+                else return 'start'
+              },              
               textTransform: 'none',
               x: function () {
-                return $scope.size.gridSize;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 16; 
+                }
+                else return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.height - $scope.size.gridSize * 6;
-              },
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.height - $scope.size.gridSize * 12.6; 
+                }
+                else return $scope.size.height - $scope.size.gridSize * 8;
+              },              
               fontWeight: 500,
               draggable: true,
               showHoverArea: true,
@@ -226,17 +256,31 @@ angular.module('cardkitApp')
               },
               controlsOrder: 1,
               fontSize: function () {
-                return templateHelper.headLineFontSize($scope)
+                if ($scope.size.name === 'Instagram') {
+                  return 28; 
+                }                
+                else return templateHelper.headLineFontSize($scope)
               },
               fontFamily: function () {
                 return $scope.theme.headlineFont;
               },
-              textAnchor: 'start',
+              textAnchor: function () {
+                if ($scope.size.name === 'Instagram') {
+                  return 'middle'; 
+                }                
+                else return 'start'
+              },
               x: function () {
-                return $scope.size.gridSize;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 16; 
+                }
+                else return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.gridSize * 3;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 13; 
+                }
+                else return $scope.size.gridSize * 3;
               },
               fontWeight: 600,
               draggable: true,
@@ -245,14 +289,15 @@ angular.module('cardkitApp')
                 text: true,
                 fontSize: {
                   'Small (24px)': 24,
+                  'Medium (28px)': 28,                  
                   'Standard (32px)': 32,
-                  'Large (40px)': 40,
-                  'X-Large (50px)': 50,
+                  'Large (34px)': 34,
+                  'X-Large (50px)': 42,
                 },
                 textAnchor: {
-                  'left': 'start',
-                  'center': 'middle',
-                  'right': 'end',
+                  'start': 'start',
+                  'middle': 'middle',
+                  'end': 'end',
                 },                 
               },
             }];
@@ -277,7 +322,10 @@ angular.module('cardkitApp')
               name: 'Pullquote',
               type: 'image',
               width: function () {
-                return $scope.size.gridSize * 10;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 20; 
+                }  
+                else return $scope.size.gridSize * 10;
               },
               controlsOrder: 4,
               height: function () {
@@ -337,7 +385,10 @@ angular.module('cardkitApp')
                 return templateHelper.logo.x($scope);
               },
               y: function () {
-                return templateHelper.logo.y($scope);
+                if ($scope.size.name === 'Instagram') {              
+                return templateHelper.logo.y($scope) -18;
+              }
+                else return templateHelper.logo.y($scope);
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: {
@@ -353,7 +404,10 @@ angular.module('cardkitApp')
                 return $scope.theme.xref;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 20 : 16;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.template.isQuote ? 30 : 20; 
+                }
+                else return ($scope.size.name === 'Twitter') ? 20 : 16;
               },
               fontFamily: function () {
                 return $scope.theme.xrefFont;
@@ -363,7 +417,10 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.height - ($scope.size.gridSize);
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.height - ($scope.size.gridSize +3);
+                }
+                else return $scope.size.height - ($scope.size.gridSize);
               },
               fontWeight: 500,
               draggable: true,
@@ -380,12 +437,15 @@ angular.module('cardkitApp')
             }, {
               name: 'Credit',
               type: 'text',
-              text: 'BABATUNDE OSOTIMEHIN',
+              text: 'BABATUNDE OSOTIMEHIN\nExecutive Director',
               controlsOrder: 2,
               fill: function () {
                 return $scope.theme.quote;
               },
               fontSize: function () {
+                if ($scope.size.name === 'Instagram') {
+                  return 25;
+                }                
                 return ($scope.size.name === 'Twitter') ? 23 : 17;
               },
               fontFamily: function () {
@@ -394,10 +454,16 @@ angular.module('cardkitApp')
               textAnchor: 'start',
               textTransform: 'none',
               x: function () {
-                return $scope.size.gridSize;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize + 16;
+                }
+                else return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.height - $scope.size.gridSize * 5;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 19;
+                }                
+                else return $scope.size.height - $scope.size.gridSize * 6;
               },
               fontWeight: 500,
               draggable: true,
@@ -435,6 +501,9 @@ angular.module('cardkitApp')
               },
               controlsOrder: 1,
               fontSize: function () {
+                if ($scope.size.name === 'Instagram') {
+                  return 65;
+                }                
                 return ($scope.size.name === 'Twitter' ) ? 60 : 50;
               },
               fontFamily: function () {
@@ -442,10 +511,16 @@ angular.module('cardkitApp')
               },
               textAnchor: 'start',
               x: function () {
-                return $scope.size.gridSize;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize + 16;
+                }
+                else return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.gridSize * 4;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 11.5;
+                }
+                else return $scope.size.gridSize * 4;
               },
               fontWeight: 600,
               draggable: true,
@@ -455,6 +530,7 @@ angular.module('cardkitApp')
                 fontSize: {
                   'Small (50px)': 50,
                   'Standard (60px)': 60,
+                  'Standard (65px)': 65,                 
                   'Large (72px)': 72,
                 },
               },
@@ -544,7 +620,10 @@ angular.module('cardkitApp')
                 return templateHelper.logo.x($scope);
               },
               y: function () {
-                return templateHelper.logo.y($scope);
+                if ($scope.size.name === 'Instagram') {              
+                return templateHelper.logo.y($scope) -18;
+              }
+                else return templateHelper.logo.y($scope);
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: {
@@ -554,13 +633,16 @@ angular.module('cardkitApp')
             }, {
               name: 'Cross Reference Text',
               type: 'text',
-              text: 'Read more at: unfpa.org/engaging-men-boys',
+              text: 'Read more: unfpa.org/engaging-men-boys',
               controlsOrder: 4,
               fill: function () {
                 return $scope.theme.xref;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 20 : 16;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.template.isQuote ? 20 : 20; 
+                }
+                else return ($scope.size.name === 'Twitter') ? 20 : 16;
               },
               fontFamily: function () {
                 return $scope.theme.xrefFont;
@@ -570,10 +652,13 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.height - ($scope.size.gridSize);
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.height - ($scope.size.gridSize +3);
+                }
+                else return $scope.size.height - ($scope.size.gridSize);
               },
               fontWeight: 500,
-              draggable: false,
+              draggable: true,
               editable: {
                 text: true
               },
@@ -586,7 +671,10 @@ angular.module('cardkitApp')
                 return $scope.theme.quote;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 22 : 16;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.template.isQuote ? 26 : 26; 
+                }
+                else return ($scope.size.name === 'Twitter') ? 22 : 16;
               },
               fontFamily: function () {
                 return $scope.theme.creditFont;
@@ -631,10 +719,10 @@ angular.module('cardkitApp')
               },
               controlsOrder: 1,
               fontSize: function () {
-                if ($scope.theme.isNikkei) {
-                  return ($scope.size.name === 'Twitter') ? 28 : 24;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.template.isQuote ? 36 : 36; 
                 }
-                return ($scope.size.name === 'Twitter') ? 32 : 26;
+                else return ($scope.size.name === 'Twitter') ? 32 : 26;
               },
               fontFamily: function () {
                 return $scope.theme.headlineFont;
@@ -652,8 +740,9 @@ angular.module('cardkitApp')
               editable: {
                 text: true,
                 fontSize: {
-                  'Small (26px)': 26,
-                  'Standard (32px)': 32,
+                  'Facebook Default (26px)': 26,
+                  'Twitter Default (32px)': 32,
+                  'Instagram Default (40px)': 40,                
                   'Large (40px)': 40,
                   'X-Large (50px)': 50,
                 },
@@ -741,7 +830,10 @@ angular.module('cardkitApp')
                 return templateHelper.logo.x($scope);
               },
               y: function () {
-                return templateHelper.logo.y($scope);
+                if ($scope.size.name === 'Instagram') {              
+                return templateHelper.logo.y($scope) -18;
+              }
+                else return templateHelper.logo.y($scope);
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: {
@@ -757,8 +849,11 @@ angular.module('cardkitApp')
                 return $scope.theme.xref;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 20 : 16;
-              },
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.template.isQuote ? 30 : 20; 
+                }
+                else return ($scope.size.name === 'Twitter') ? 20 : 16;
+              }, 
               fontFamily: function () {
                 return $scope.theme.xrefFont;
               },
@@ -767,7 +862,10 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.height - ($scope.size.gridSize);
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.height - ($scope.size.gridSize +3);
+                }
+                else return $scope.size.height - ($scope.size.gridSize);
               },
               fontWeight: 500,
               draggable: false,
@@ -776,6 +874,7 @@ angular.module('cardkitApp')
                 fontSize: {
                   'X-Small (16px)': 16,
                   'Small (18px)': 18,
+                  'Medium (20px)': 20,                 
                   'Standard (22px)': 22,
                   'Large (24px)': 24,
                 }
@@ -789,7 +888,10 @@ angular.module('cardkitApp')
                 return $scope.theme.quote;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 32 : 26;
+                if ($scope.size.name === 'Instagram') {
+                  return 34;
+                }                
+                else return ($scope.size.name === 'Twitter') ? 32 : 26;
               },
               fontFamily: function () {
                 return $scope.theme.creditFont;
@@ -799,7 +901,10 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.gridSize * 13;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 15;
+              }
+                else return $scope.size.gridSize * 13;
               },
               fontWeight: 500,
               draggable: true,
@@ -829,7 +934,10 @@ angular.module('cardkitApp')
               },
               controlsOrder: 1,
               fontSize: function () {
-                return ($scope.size.name === 'Facebook') ? 80 : 100;
+                if ($scope.size.name === 'Instagram') {
+                  return 120;
+              }
+                else return ($scope.size.name === 'Facebook') ? 80 : 100;
               },
               fontFamily: function () {
                 return $scope.theme.headlineFont;
@@ -839,7 +947,10 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.gridSize * 7;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 11;
+              }
+                else return $scope.size.gridSize * 7;
               },
               fontWeight: 600,
               draggable: true,
@@ -868,7 +979,10 @@ angular.module('cardkitApp')
               name: 'Illustration',
               type: 'image',
               width: function () {
-                return $scope.size.width * 0.7;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.width * 1.4; 
+                }
+                else return ($scope.size.name === 'Twitter') ? $scope.size.width * 0.7 : $scope.size.width * 0.73;
               },
               controlsOrder: 1,
               height: function () {
@@ -945,12 +1059,15 @@ angular.module('cardkitApp')
             }, {
               name: 'Ref Text',
               type: 'text',
-              text: 'unfpa.org/\nxxxxx',
+              text: 'unfpa.org/\nxxx',
               controlsOrder: 3,
               fill: function () {
                 return $scope.theme.xref;
               },
               fontSize: function () {
+                if ($scope.size.name === 'Instagram') {
+                  return 16;
+                }
                 if ($scope.theme.isNikkei) return 0;
                 return ($scope.size.name === 'Twitter') ? 16 : 12;
               },
@@ -963,7 +1080,10 @@ angular.module('cardkitApp')
                 return (w - w * 0.3) + $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.height - ($scope.size.gridSize * ($scope.theme.isNikkei ? 4 : 2) + 2);
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.height - ($scope.size.gridSize * ($scope.theme.isNikkei ? 4 : 2) + 128);;
+                }
+                else return $scope.size.height - ($scope.size.gridSize * ($scope.theme.isNikkei ? 4 : 2) + 2);
               },
               fontWeight: 500,
               draggable: true,
@@ -975,6 +1095,7 @@ angular.module('cardkitApp')
                   'X-Small (12px)': 12,
                   'Smaller (14px)': 14,
                   'Small (16px)': 16,
+                  'Medium (18px)': 18,                  
                   'Large (22px)': 22,
                   'Larger (24px)': 24,
                   'X-Large (26px)': 26,
@@ -991,9 +1112,9 @@ angular.module('cardkitApp')
                   'UNFPA Bold': 'unfpabold',
                 },
                 textAnchor: {
-                  'left': 'start',
-                  'center': 'middle',
-                  'right': 'end',
+                  'start': 'start',
+                  'middle': 'middle',
+                  'end': 'end',
                 },
               },
             }, {
@@ -1005,6 +1126,9 @@ angular.module('cardkitApp')
                 return $scope.theme.xref;
               },
               fontSize: function () {
+                if ($scope.size.name === 'Instagram') {
+                  return 21;
+                }
                 return ($scope.size.name === 'Twitter') ? 21 : 17;
               },
               fontFamily: function () {
@@ -1019,7 +1143,10 @@ angular.module('cardkitApp')
                 return (w - w * 0.3) + $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.gridSize * 2;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 8;
+                }
+                else return $scope.size.gridSize * 2;
               },
               fontWeight: 500,
               draggable: true,
@@ -1092,7 +1219,10 @@ angular.module('cardkitApp')
                 return x;
               },
               y: function () {
-                return $scope.size.gridSize;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 8;
+                }
+                else return $scope.size.gridSize;
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
@@ -1156,22 +1286,35 @@ angular.module('cardkitApp')
                 return $scope.theme.xref;
               },
               fontSize: function () {
-                if ($scope.theme.isNikkei) return 0;
-                return ($scope.size.name === 'Twitter') ? 16 : 12;
+                if ($scope.size.name === 'Instagram') {
+                  return 16;
+                }
+                else return ($scope.size.name === 'Twitter') ? 16 : 12;
               },
               fontFamily: function () {
                 return $scope.theme.xrefFont;
               },
-              textAnchor: 'start',
+              textAnchor: function () {
+                if ($scope.size.name === 'Instagram') {
+                  return 'end'; 
+                }                
+                else return 'start'
+              },
+              
               x: function () {
-                var w = $scope.size.width;
-                return (w - w * 0.3) + $scope.size.gridSize;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 31.4;
+                }
+                else return $scope.size.gridSize * 28.6;
               },
               y: function () {
-                return $scope.size.height - ($scope.size.gridSize * ($scope.theme.isNikkei ? 4 : 2) + 2);
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.height - ($scope.size.gridSize * ($scope.theme.isNikkei ? 4 : 2) + 48);
+                }
+                else return $scope.size.height - ($scope.size.gridSize * ($scope.theme.isNikkei ? 4 : 2) + 2);
               },
               fontWeight: 500,
-              draggable: false,
+              draggable: true,
               editable: {
                 text: true
               }
@@ -1184,6 +1327,9 @@ angular.module('cardkitApp')
                 return $scope.theme.xref;
               },
               fontSize: function () {
+                if ($scope.size.name === 'Instagram') {
+                  return 22;
+                }
                 return ($scope.size.name === 'Twitter') ? 22 : 18;
               },
               fontFamily: function () {
@@ -1198,7 +1344,10 @@ angular.module('cardkitApp')
                 return (w - w * 0.3) + $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.gridSize * 2;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 8;
+                }
+                else return $scope.size.gridSize * 2;
               },
               fontWeight: 500,
               draggable: true,
@@ -1265,7 +1414,10 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.gridSize;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 8;
+                }
+                else return $scope.size.gridSize;
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
@@ -1330,8 +1482,10 @@ angular.module('cardkitApp')
                 return $scope.theme.xref;
               },
               fontSize: function () {
-                if ($scope.theme.isNikkei) return 0;
-                return ($scope.size.name === 'Twitter') ? 16 : 12;
+                if ($scope.size.name === 'Instagram') {
+                  return 16;
+                }
+                else return ($scope.size.name === 'Twitter') ? 16 : 12;
               },
               fontFamily: function () {
                 return $scope.theme.xrefFont;
@@ -1370,10 +1524,13 @@ angular.module('cardkitApp')
               },
               x: function () {
                 var w = $scope.size.width;
-                return (w - w * 0.25) + $scope.size.gridSize;
+                return (w - w * 0.26) + $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.gridSize * 2;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 12;
+                }
+                else return $scope.size.gridSize * 2;
               },
               fontWeight: 500,
               draggable: true,
@@ -1414,8 +1571,17 @@ angular.module('cardkitApp')
             }, {
               name: 'Promo Image',
               type: 'image',
+              y: function () {
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.height - ($scope.size.gridSize +3);
+                }
+                else return $scope.size.height - ($scope.size.gridSize);
+              },              
               width: function () {
-                return $scope.size.width;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.width * 1.4;
+                }
+                else return $scope.size.width;
               },
               controlsOrder: 1,
               height: function () {
@@ -1432,7 +1598,6 @@ angular.module('cardkitApp')
               },
               opacity: 1,
               x: '0%',
-              y: '0%',
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
               showHoverArea: true,
@@ -1478,7 +1643,10 @@ angular.module('cardkitApp')
                 return templateHelper.logo.x($scope);
               },
               y: function () {
-                return templateHelper.logo.y($scope);
+                if ($scope.size.name === 'Instagram') {              
+                return templateHelper.logo.y($scope) -18;
+              }
+                else return templateHelper.logo.y($scope);
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: {
@@ -1494,8 +1662,11 @@ angular.module('cardkitApp')
                 return $scope.theme.xref;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 20 : 16;
-              },
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.template.isQuote ? 30 : 20; 
+                }
+                else return ($scope.size.name === 'Twitter') ? 20 : 16;
+              },  
               fontFamily: function () {
                 return $scope.theme.xrefFont;
               },
@@ -1504,7 +1675,10 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.height - ($scope.size.gridSize);
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.height - ($scope.size.gridSize +3);
+                }
+                else return $scope.size.height - ($scope.size.gridSize);
               },
               fontWeight: 500,
               draggable: false,
@@ -1539,7 +1713,10 @@ angular.module('cardkitApp')
               name: 'Promo Image',
               type: 'image',
               width: function () {
-                return $scope.size.width * 0.75;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.width * 1.5; 
+                }
+                else return ($scope.size.name === 'Twitter') ? $scope.size.width * 0.75 : $scope.size.width * 0.79;
               },
               controlsOrder: 1,
               height: function () {
@@ -1555,7 +1732,12 @@ angular.module('cardkitApp')
                 return $scope.theme.images.promoSrc;
               },
               opacity: 1,
-              x: '0%',
+              x: function () {
+                if ($scope.size.name === 'Instagram') {
+                  return '-150%';
+                }
+                else return '0%';
+                },
               y: '0%',
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
@@ -1620,6 +1802,9 @@ angular.module('cardkitApp')
                 return $scope.theme.xref;
               },
               fontSize: function () {
+                if ($scope.size.name === 'Instagram') {
+                  return 22;
+                }
                 return ($scope.size.name === 'Twitter') ? 24 : 18;
               },
               fontFamily: function () {
@@ -1634,7 +1819,10 @@ angular.module('cardkitApp')
                 return (w - w * 0.25) + $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.gridSize * 2;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 10;
+                }
+                else return $scope.size.gridSize * 2;
               },
               fontWeight: 500,
               draggable: true,
@@ -1676,7 +1864,10 @@ angular.module('cardkitApp')
               name: 'Promo Image',
               type: 'image',
               width: function () {
-                return $scope.size.width * 0.75;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.width * 1.5; 
+                }
+                else return ($scope.size.name === 'Twitter') ? $scope.size.width * 0.75 : $scope.size.width * 0.784;
               },
               controlsOrder: 3,
               height: function () {
@@ -1737,11 +1928,16 @@ angular.module('cardkitApp')
               },
               opacity: 1,
               x: function () {
-                return $scope.size.width - ($scope.theme.isNikkei ? this.width($scope) : $scope.size.gridSize * 19);
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.width * 0.665;
+                }                
+                else return $scope.size.gridSize * 21;
               },
               y: function () {
-                var paddingTop = $scope.theme.isNikkei ? 0 : $scope.size.gridSize * -0.9;
-                return $scope.size.height - (this.height($scope) + paddingTop);
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 23;
+                }
+                else return ($scope.size.name === 'Twitter') ? $scope.size.gridSize *15 : $scope.size.gridSize *16;
               },
               preserveAspectRatio: 'xMidYMid slice',
               draggable: true,
@@ -1755,21 +1951,34 @@ angular.module('cardkitApp')
                 return $scope.theme.xref;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 32 : 28;
+                if ($scope.size.name === 'Instagram') {
+                  return 44;
+                }                
+                else return ($scope.size.name === 'Twitter') ? 32 : 28;
               },
               fontFamily: function () {
                 return $scope.theme.promoFont;
               },
-              textAnchor: 'end',
+              textAnchor: function () {
+                if ($scope.size.name === 'Instagram') {
+                  return 'middle'; 
+                }                
+                else return 'end'
+              }, 
               width: function () {
                 return $scope.size.width * 0.25;
               },
               x: function () {
-                var w = $scope.size.width;
-                return (w - w * 0.08) + $scope.size.gridSize;
+                if ($scope.size.name === 'Instagram') {
+                  return ($scope.size.gridSize) * 24.2;
+                }
+                else return ($scope.size.width - $scope.size.width * 0.08) + $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.gridSize * 2.9;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 11;
+                }
+                else return $scope.size.gridSize * 2.9;
               },
               fontWeight: 500,
               draggable: true,
@@ -1785,9 +1994,9 @@ angular.module('cardkitApp')
                   'Medium (20px)': 20,
                   'Standard (24px)': 24,
                   'Facebook Default (28px)': 28,
-                  'Large (34px)': 34,
+                  'X-Large (40px)': 40,
                   'Twitter Default (34px)': 34,
-                  'X-Large (36px)': 36,
+                  'Large (38px)': 38,
                   'XX-Large (44px)': 44,
                 },
                 textAnchor: {
@@ -1799,26 +2008,39 @@ angular.module('cardkitApp')
             }, {
               name: 'More Text',
               type: 'text',
-              text: 'One UN agency\ndoes it all.',
+              text: 'Stories of\npopulation trends\nas they happen',
               controlsOrder: 2,
               fill: function () {
                 return $scope.theme.xref;
               },
               fontSize: function () {
+                if ($scope.size.name === 'Instagram') {
+                  return 22;
+                }
                 return ($scope.size.name === 'Twitter') ? 24 : 18;
               },
               fontFamily: 'eureka-bold',
               fontStyle: 'normal',
-              textAnchor: 'end',
+              textAnchor: function () {
+                if ($scope.size.name === 'Instagram') {
+                  return 'middle'; 
+                }                
+                else return 'end'
+              }, 
               width: function () {
                 return $scope.size.gridSize * 0.25;
               },
               x: function () {
-                var w = $scope.size.width;
-                return (w - $scope.size.gridSize * 2);
+                if ($scope.size.name === 'Instagram') {
+                  return ($scope.size.gridSize) * 24.2;
+                }
+                else return ($scope.size.width - $scope.size.width * 0.08) + $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.gridSize * 15;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 20;
+                }
+                else return $scope.size.gridSize * 13.5;
               },
               fontWeight: 300,
               draggable: true,
@@ -1827,6 +2049,8 @@ angular.module('cardkitApp')
                 text: true,
                 fontSize: {
                   'Small (18px)': 18,
+                  'Medium (21px)': 21,
+                  'Instagram Default (22px)': 22,                                  
                   'Standard (24px)': 24,
                   'Large (34px)': 34,
                 },
@@ -1952,7 +2176,7 @@ angular.module('cardkitApp')
               textTransform: 'uppercase',
               controlsOrder: 1,
               fill: function () {
-                return $scope.theme.xref;
+                return $scope.theme.donate;
               },
               fontSize: function () {
                 return ($scope.size.name === 'Twitter') ? 24 : 18;
@@ -1982,14 +2206,22 @@ angular.module('cardkitApp')
             }, {
               name: 'Credit',
               type: 'text',
-              text: 'Cash moves everything around me',
+              text: function () {
+                if ($scope.size.name === 'Instagram') {
+                 return 'You can deliver hope and health\nto women with this heartbreaking\ninjury of childbearing — and prevent it\nfrom occurring in the first place.\n\n$10\nfeeds a recovering fistula patient\nfor two weeks.\n\n$60\npays for a Caesarean section\nto prevent the problem.';
+                }
+                else return 'You can deliver hope and health to women\nwith this heartbreaking injury of childbearing.\n\n$10 feeds a recovering fistula patient for two weeks.\n$60 pays for a Caesarean section to prevent the problem.'
+              },
               controlsOrder: 3,
               fill: function () {
                 return $scope.theme.quote;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 22 : 18;
-              },
+                if ($scope.size.name === 'Instagram') {
+                  return 28;
+                }
+                else return ($scope.size.name === 'Twitter') ? 22 : 18;
+              },              
               fontFamily: function () {
                 return $scope.theme.creditFont;
               },
@@ -1999,7 +2231,10 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.height - $scope.size.gridSize * 5;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 10;
+                }
+                else return $scope.size.height - $scope.size.gridSize *11.5;
               },
               fontWeight: 500,
               draggable: true,
@@ -2021,7 +2256,10 @@ angular.module('cardkitApp')
                 return $scope.theme.highlightColor;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 18 : 14;
+                if ($scope.size.name === 'Instagram') {
+                  return 20;
+                }
+                else return ($scope.size.name === 'Twitter') ? 18 : 14;
               },
               fontFamily: function () {
                 return $scope.theme.creditFont;
@@ -2032,7 +2270,10 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.height - $scope.size.gridSize;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.height - $scope.size.gridSize * 1.2;
+                }
+                else return $scope.size.height - $scope.size.gridSize;
               },
               fontWeight: 500,
               draggable: true,
@@ -2049,13 +2290,16 @@ angular.module('cardkitApp')
             }, {
               name: 'Quote',
               type: 'text',
-              text: '‘Give us the money \nor else!’',
+              text: 'Help end fistula',
               fill: function () {
                 return $scope.theme.quote;
               },
               controlsOrder: 2,
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 44 : 34;
+                if ($scope.size.name === 'Instagram') {
+                  return 65;
+                } 
+                else return ($scope.size.name === 'Twitter') ? 44 : 34;
               },
               fontFamily: function () {
                 return $scope.theme.headlineFont;
@@ -2065,7 +2309,10 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.gridSize * 6;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 7;
+                }                                
+                else return $scope.size.gridSize * 6;
               },
               fontWeight: 600,
               draggable: true,
@@ -2181,8 +2428,11 @@ angular.module('cardkitApp')
                 return $scope.theme.event;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 24 : 18;
-              },
+                if ($scope.size.name === 'Instagram') {
+                  return 24;
+                }
+                else return ($scope.size.name === 'Twitter') ? 24 : 18;
+              }, 
               fontFamily: function () {
                 return $scope.theme.xrefFont;
               },
@@ -2223,9 +2473,11 @@ angular.module('cardkitApp')
                 return templateHelper.logo.x($scope);
               },
               y: function () {
-                var paddingTop = $scope.theme.isNikkei ? 0 : $scope.size.gridSize;
-                return $scope.size.height - (this.height($scope) + paddingTop * -1.1);
-              },
+                if ($scope.size.name === 'Instagram') {
+                return $scope.size.height - (this.height($scope) + $scope.size.gridSize * -0.9);
+                }                                
+                else return $scope.size.height - (this.height($scope) + $scope.size.gridSize * -1.1);
+              },              
               preserveAspectRatio: 'xMinYMin meet',
               draggable: {
                 x: true,
@@ -2252,10 +2504,13 @@ angular.module('cardkitApp')
                 return $scope.theme.quote;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 22 : 18;
-              },
+                if ($scope.size.name === 'Instagram') {
+                  return 28;
+                }
+                else return ($scope.size.name === 'Twitter') ? 22 : 18;
+              },   
               fontFamily: function () {
-                return $scope.theme.eventFont;
+                return 'unfpasemibold';
               },
               textAnchor: 'start',
               textTransform: 'none',
@@ -2263,8 +2518,11 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.height - $scope.size.gridSize * 10;
-              },
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 12;
+                }
+                else return $scope.size.height - $scope.size.gridSize *10;
+              },              
               fontWeight: 500,
               draggable: true,
               showHoverArea: true,
@@ -2284,14 +2542,22 @@ angular.module('cardkitApp')
             }, {
               name: 'Event details',
               type: 'text',
-              text: 'Got a question for the ED? You can submit them now on Voices.',
+              text: function () {
+                if ($scope.size.name === 'Instagram') {
+                 return 'Got a question for the ED?\nYou can submit them now on Voices.';
+                }
+                else return 'Got a question for the ED? You can submit them now on Voices.'
+              },              
               controlsOrder: 4,
               fill: function () {
                 return $scope.theme.highlightColor;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 18 : 14;
-              },
+                if ($scope.size.name === 'Instagram') {
+                  return 22;
+                }
+                else return ($scope.size.name === 'Twitter') ? 18 : 14;
+              },   
               fontFamily: function () {
                 return $scope.theme.creditFont;
               },
@@ -2301,8 +2567,11 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.height - $scope.size.gridSize * 3;
-              },
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 22;
+                }
+                else return $scope.size.height - $scope.size.gridSize *3;
+              },      
               fontWeight: 500,
               draggable: true,
               showHoverArea: true,
@@ -2314,9 +2583,9 @@ angular.module('cardkitApp')
                   'Large (22px)': 22,
                 },
                 textAnchor: {
-                  'left': 'start',
-                  'center': 'middle',
-                  'right': 'end',
+                  'start': 'start',
+                  'middle': 'middle',
+                  'end': 'end',
                 },                 
                 fill: 'picker'
               },
@@ -2329,8 +2598,11 @@ angular.module('cardkitApp')
                 return $scope.theme.quote;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 18 : 14;
-              },
+                if ($scope.size.name === 'Instagram') {
+                  return 25;
+                }
+                else return ($scope.size.name === 'Twitter') ? 18 : 14;
+              },   
               fontFamily: function () {
                 return $scope.theme.eventFont;
               },
@@ -2340,8 +2612,11 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.height - $scope.size.gridSize * 7;
-              },
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 14;
+                }
+                else return $scope.size.height - $scope.size.gridSize * 7;
+              },                 
               fontWeight: 500,
               draggable: true,
               showHoverArea: true,
@@ -2368,7 +2643,10 @@ angular.module('cardkitApp')
               },
               controlsOrder: 2,
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 44 : 34;
+                if ($scope.size.name === 'Instagram') {
+                  return 55;
+                } 
+                else return ($scope.size.name === 'Twitter') ? 44 : 34;
               },
               fontFamily: function () {
                 return $scope.theme.headlineFont;
@@ -2378,7 +2656,10 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.gridSize * 6;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 7;
+                }                                
+                else return $scope.size.gridSize * 6;
               },
               fontWeight: 600,
               draggable: true,
@@ -2422,7 +2703,10 @@ angular.module('cardkitApp')
               name: 'Image',
               type: 'image',
               width: function () {
-                return $scope.size.gridSize * 20;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 30;
+                }
+                else return $scope.size.gridSize * 20;
               },
               controlsOrder: 2,
               height: function () {
@@ -2435,17 +2719,23 @@ angular.module('cardkitApp')
                 return $scope.theme.images.headshotSrc || '';
               },
               opacity: 1,
-              x: function () {
+              x: function () {                                 
                 var w;
                 if (typeof this.width === 'function') {
                   w = this.width();
                 } else {
                   w = +this.width;
                 }
-                return $scope.size.width - (w + $scope.size.gridSize);
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.width - (w + $scope.size.gridSize *-7);
+                }                
+                else return $scope.size.width - (w + $scope.size.gridSize);
               },
               y: function () {
-                return $scope.size.gridSize;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 4;
+                }
+                else return $scope.size.gridSize;
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
@@ -2482,7 +2772,10 @@ angular.module('cardkitApp')
               name: 'Cosponsor Logo',
               type: 'image',
               width: function () {
-                return $scope.size.width * 0.24;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.width * 0.28;
+                }              
+                else return $scope.size.width * 0.24;
               },
               controlsOrder: 1,
               height: function () {
@@ -2498,12 +2791,17 @@ angular.module('cardkitApp')
                 return $scope.theme.isNikkei ? $scope.theme.images.logoWideSrc : $scope.theme.images.GlobalgoalsSrc;
               },              opacity: 1,
               x: function () {
-                return $scope.size.width - ($scope.theme.isNikkei ? this.width($scope) : $scope.size.gridSize * 11);
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.width - ($scope.theme.isNikkei ? this.width($scope) : $scope.size.gridSize * 10);
+                }                
+                else return $scope.size.width - ($scope.theme.isNikkei ? this.width($scope) : $scope.size.gridSize * 11);
               },
               y: function () {
-                var paddingTop = $scope.theme.isNikkei ? 0 : $scope.size.gridSize * -3.3;
-                return $scope.size.height - (this.height($scope) + paddingTop);
-              },
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 26;
+                }
+                else return ($scope.size.name === 'Twitter') ? $scope.size.gridSize * 13.40 : $scope.size.gridSize *14.65;
+              }, 
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
               showHoverArea: true,
@@ -2527,12 +2825,17 @@ angular.module('cardkitApp')
               },
               opacity: 1,
               x: function () {
-                return $scope.size.width - ($scope.theme.isNikkei ? this.width($scope) : $scope.size.gridSize * 39);
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize ;
+                }                
+                else return $scope.size.width - ($scope.theme.isNikkei ? this.width($scope) : $scope.size.gridSize * 39);
               },
               y: function () {
-                var paddingTop = $scope.theme.isNikkei ? 0 : $scope.size.gridSize * -1.25;
-                return $scope.size.height - (this.height($scope) + paddingTop);
-              },
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 27.8;
+                }
+                else return ($scope.size.name === 'Twitter') ? $scope.size.gridSize *15.45 : $scope.size.gridSize *16.7;
+              },     
               preserveAspectRatio: 'xMidYMid slice',
               draggable: true,
               showHoverArea: true,
@@ -2570,13 +2873,16 @@ angular.module('cardkitApp')
             }, {
               name: 'Credit',
               type: 'text',
-              text: 'Babatunde Osotimehin on the\n#Goal5 target to #EndFGM',
+              text: 'BABATUNDE OSOTIMEHIN on the\n#Goal5 target to #EndFGM',
               controlsOrder: 3,
               fill: function () {
                 return $scope.theme.quote;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 22 : 16;
+                if ($scope.size.name === 'Instagram') {              
+                  return 22;
+                }
+                else return ($scope.size.name === 'Twitter') ? 22 : 16;
               },
               fontFamily: function () {
                 return $scope.theme.creditFont;
@@ -2584,10 +2890,13 @@ angular.module('cardkitApp')
               textAnchor: 'start',
               textTransform: 'none',
               x: function () {
-                return $scope.size.gridSize;
+                  return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.height - $scope.size.gridSize * 6;
+                if ($scope.size.name === 'Instagram') {              
+                  return $scope.size.height - $scope.size.gridSize * 12;
+                }
+                return $scope.size.height - $scope.size.gridSize * 6.5;
               },
               fontWeight: 500,
               draggable: true,
@@ -2616,13 +2925,16 @@ angular.module('cardkitApp')
             }, {
               name: 'Headline',
               type: 'text',
-              text: 'There is absolutely no\nreason to cut anybody...\n\n'+
-              'I think it’s child abuse.',
+              text: 'There is absolutely no\nreason to cut anybody.\n\n'+
+              'It’s child abuse.',
               fill: function () {
                 return $scope.theme.quote;
               },
               controlsOrder: 1,
               fontSize: function () {
+                if ($scope.size.name === 'Instagram') {
+                  return 32;
+                }
                 return ($scope.size.name === 'Twitter') ? 32 : 24;
               },
               fontFamily: function () {
@@ -2633,8 +2945,11 @@ angular.module('cardkitApp')
                 return $scope.size.gridSize;
               },
               y: function () {
-                return $scope.size.gridSize * 3;
-              },
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 12;
+                }
+                return $scope.size.gridSize *3;
+              },              
               fontWeight: 600,
               draggable: true,
               showHoverArea: true,
@@ -2746,7 +3061,10 @@ angular.module('cardkitApp')
               },
               opacity: 1,
               x: function () {
-                return $scope.size.width - ($scope.size.gridSize * 11);
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.width - ($scope.size.gridSize * 8.5);
+                }                
+                else return $scope.size.width - ($scope.size.gridSize * 11);
               },
               y: function () {
                 return $scope.size.gridSize;
@@ -2806,11 +3124,17 @@ angular.module('cardkitApp')
               },
               opacity: 1,
               x: function () {
-                return $scope.size.width - ($scope.theme.isNikkei ? this.width($scope) : $scope.size.gridSize * 26.5);
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.width - ($scope.theme.isNikkei ? this.width($scope) : $scope.size.gridSize * 21.5);
+                }
+                else return $scope.size.width - ($scope.theme.isNikkei ? this.width($scope) : $scope.size.gridSize * 26.5);
               },
               y: function () {
                 var paddingTop = $scope.theme.isNikkei ? 0 : $scope.size.gridSize ;
-                return $scope.size.height - (this.height($scope) + paddingTop * -5);
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.height - (this.height($scope) + paddingTop *-3.8);
+                }
+                else return $scope.size.height - (this.height($scope) + paddingTop * -5);                                
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
@@ -2841,10 +3165,16 @@ angular.module('cardkitApp')
               },
               opacity: 1,
               x: function () {
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 7.4;
+                }
                 return $scope.size.width - ($scope.theme.isNikkei ? this.width($scope) : $scope.size.gridSize * 30.5);
               },
               y: function () {
                 var paddingTop = $scope.theme.isNikkei ? 0 : $scope.size.gridSize * 2.91;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.height - (this.height($scope) + paddingTop * 2.5);
+                }
                 return $scope.size.height - (this.height($scope) + paddingTop );
               },
               preserveAspectRatio: 'xMinYMin meet',
@@ -2888,7 +3218,7 @@ angular.module('cardkitApp')
               text: 'Read more at\nunfpa.org/xxx',
               controlsOrder: 3,
               fill: function () {
-                return $scope.theme.xref;
+                return $scope.theme.donate;
               },
               fontSize: function () {
                 return ($scope.size.name === 'Twitter') ? 18 : 14;
@@ -2941,10 +3271,14 @@ angular.module('cardkitApp')
               text: 'Add text here -\nYou can also drag\nit around.\n\nIt can be over one\nline or several.',
               controlsOrder: 2,
               fill: function () {
-                return $scope.theme.xref;
+                return $scope.theme.donate;
               },
               fontSize: function () {
-                return ($scope.size.name === 'Twitter') ? 24 : 18;
+                var w = $scope.size.width;
+                if ($scope.size.name === 'Instagram') {                
+                  return 24;
+                }                
+                else return ($scope.size.name === 'Twitter') ? 24 : 18;
               },
               fontFamily: 'eureka-regular',
               textAnchor: 'start',
@@ -2953,10 +3287,16 @@ angular.module('cardkitApp')
               },
               x: function () {
                 var w = $scope.size.width;
-                return (w - $scope.size.gridSize * 11);
+                if ($scope.size.name === 'Instagram') {
+                  return (w - $scope.size.gridSize * 8.8);
+                }
+                else return (w - $scope.size.gridSize * 11);
               },
               y: function () {
-                return $scope.size.gridSize * 7;
+                if ($scope.size.name === 'Instagram') {
+                  return $scope.size.gridSize * 13;
+                }                
+                else return $scope.size.gridSize * 7;
               },
               fontWeight: 500,
               draggable: true,
