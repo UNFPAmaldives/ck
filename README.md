@@ -2,7 +2,7 @@
 
 [![Join the chat at https://gitter.im/unfpamaldives/cardkit](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/times/cardkit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-## Version 1.1.1
+## Version 1.1.4
 
 ### 2016 [John Zuwasti Curran](http://www.twitter.com/gonow), Strategic Advocacy and Innovative Partnerships Adviser, [UNFPA](http://www.unfpa.org/)
 
