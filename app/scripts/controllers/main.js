@@ -22,6 +22,7 @@ angular.module('cardkitApp')
           height: 320,
           gridSize: 16.25,
           fill: 'transparent',
+          default: true
         },
         {
           name: 'Facebook',
@@ -90,8 +91,8 @@ angular.module('cardkitApp')
     }
 
     // Configure templates, set default
-    if(typeof $scope.config.template !== 'undefined') {
-      var defaultTemplate = $filter('filter')($scope.config.template, {
+    if(typeof $scope.config.templates !== 'undefined') {
+      var defaultTemplate = $filter('filter')($scope.config.templates, {
         default: true
       }, true)[0];
       if(defaultTemplate) {

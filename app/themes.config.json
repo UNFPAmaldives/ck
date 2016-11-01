@@ -1,6 +1,7 @@
 [
   {
     "name": "UNFPA yellow",
+    "default": true,
     "background": "#ffd558",
     "headline": "#5d6260",
     "xrefBackground": "#fc3",
