@@ -2289,7 +2289,7 @@ angular.module('cardkitApp')
               opacity: 1,
               x: function () {
                 if ($scope.size.name === 'Instagram') {
-                  return '-150%';
+                  return '-15%';
                 }
                 else return '0%';
                 },
