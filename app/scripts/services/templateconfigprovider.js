@@ -302,15 +302,15 @@ angular.module('cardkitApp')
               name: 'UNFPA Brand Extension Logos',
               type: 'image',
               width: function () {
-                return $scope.size.width * 0.45;
+                return $scope.size.width * 0.15;
               },
               controlsOrder: 20,
               height: function () {
                 var h;
                 if (typeof this.width === 'string') {
-                  h = +this.width;
+                  h = +this.width * .5;
                 } else {
-                  h = this.width();
+                  h = this.width() *.5;
                 }
                 return h;
               },
@@ -331,7 +331,7 @@ angular.module('cardkitApp')
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
-              showHoverArea: false,
+              showHoverArea: true,
               defaultFilter: '',
               editable: {
                 src: {
@@ -603,15 +603,15 @@ angular.module('cardkitApp')
               name: 'UNFPA Brand Extension Logos',
               type: 'image',
               width: function () {
-                return $scope.size.width * 0.45;
+                return $scope.size.width * 0.15;
               },
               controlsOrder: 20,
               height: function () {
                 var h;
                 if (typeof this.width === 'string') {
-                  h = +this.width;
+                  h = +this.width * .5;
                 } else {
-                  h = this.width();
+                  h = this.width() *.5;
                 }
                 return h;
               },
@@ -632,7 +632,7 @@ angular.module('cardkitApp')
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
-              showHoverArea: false,
+              showHoverArea: true,
               defaultFilter: '',
               editable: {
                 src: {
@@ -665,7 +665,7 @@ angular.module('cardkitApp')
                   'Master Narrative Español': $scope.theme.images.MNes                  
                 },
                 width: true,
-              },              
+              },                  
             }];
           }
         }, {
@@ -909,15 +909,15 @@ angular.module('cardkitApp')
               name: 'UNFPA Brand Extension Logos',
               type: 'image',
               width: function () {
-                return $scope.size.width * 0.45;
+                return $scope.size.width * 0.15;
               },
               controlsOrder: 20,
               height: function () {
                 var h;
                 if (typeof this.width === 'string') {
-                  h = +this.width;
+                  h = +this.width * .5;
                 } else {
-                  h = this.width();
+                  h = this.width() *.5;
                 }
                 return h;
               },
@@ -938,7 +938,7 @@ angular.module('cardkitApp')
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
-              showHoverArea: false,
+              showHoverArea: true,
               defaultFilter: '',
               editable: {
                 src: {
@@ -971,7 +971,7 @@ angular.module('cardkitApp')
                   'Master Narrative Español': $scope.theme.images.MNes                  
                 },
                 width: true,
-              },              
+              },                  
             }];
           }
         }, {
@@ -1188,15 +1188,15 @@ angular.module('cardkitApp')
               name: 'UNFPA Brand Extension Logos',
               type: 'image',
               width: function () {
-                return $scope.size.width * 0.45;
+                return $scope.size.width * 0.15;
               },
               controlsOrder: 20,
               height: function () {
                 var h;
                 if (typeof this.width === 'string') {
-                  h = +this.width;
+                  h = +this.width * .5;
                 } else {
-                  h = this.width();
+                  h = this.width() *.5;
                 }
                 return h;
               },
@@ -1217,7 +1217,7 @@ angular.module('cardkitApp')
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
-              showHoverArea: false,
+              showHoverArea: true,
               defaultFilter: '',
               editable: {
                 src: {
@@ -1250,7 +1250,7 @@ angular.module('cardkitApp')
                   'Master Narrative Español': $scope.theme.images.MNes                  
                 },
                 width: true,
-              },                   
+              },                       
             }];
           }
         }, {
@@ -1464,15 +1464,15 @@ angular.module('cardkitApp')
               name: 'UNFPA Brand Extension Logos',
               type: 'image',
               width: function () {
-                return $scope.size.width * 0.45;
+                return $scope.size.width * 0.15;
               },
               controlsOrder: 20,
               height: function () {
                 var h;
                 if (typeof this.width === 'string') {
-                  h = +this.width;
+                  h = +this.width * .5;
                 } else {
-                  h = this.width();
+                  h = this.width() *.5;
                 }
                 return h;
               },
@@ -1493,7 +1493,7 @@ angular.module('cardkitApp')
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
-              showHoverArea: false,
+              showHoverArea: true,
               defaultFilter: '',
               editable: {
                 src: {
@@ -1526,7 +1526,7 @@ angular.module('cardkitApp')
                   'Master Narrative Español': $scope.theme.images.MNes                  
                 },
                 width: true,
-              },                   
+              },                       
             }];
           }
         }, {
@@ -1731,15 +1731,15 @@ angular.module('cardkitApp')
               name: 'UNFPA Brand Extension Logos',
               type: 'image',
               width: function () {
-                return $scope.size.width * 0.45;
+                return $scope.size.width * 0.15;
               },
               controlsOrder: 20,
               height: function () {
                 var h;
                 if (typeof this.width === 'string') {
-                  h = +this.width;
+                  h = +this.width * .5;
                 } else {
-                  h = this.width();
+                  h = this.width() *.5;
                 }
                 return h;
               },
@@ -1760,7 +1760,7 @@ angular.module('cardkitApp')
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
-              showHoverArea: false,
+              showHoverArea: true,
               defaultFilter: '',
               editable: {
                 src: {
@@ -1793,7 +1793,7 @@ angular.module('cardkitApp')
                   'Master Narrative Español': $scope.theme.images.MNes                  
                 },
                 width: true,
-              },                   
+              },                       
             }];
           }
         }, {
@@ -1980,15 +1980,15 @@ angular.module('cardkitApp')
               name: 'UNFPA Brand Extension Logos',
               type: 'image',
               width: function () {
-                return $scope.size.width * 0.45;
+                return $scope.size.width * 0.15;
               },
               controlsOrder: 20,
               height: function () {
                 var h;
                 if (typeof this.width === 'string') {
-                  h = +this.width;
+                  h = +this.width * .5;
                 } else {
-                  h = this.width();
+                  h = this.width() *.5;
                 }
                 return h;
               },
@@ -2009,7 +2009,7 @@ angular.module('cardkitApp')
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
-              showHoverArea: false,
+              showHoverArea: true,
               defaultFilter: '',
               editable: {
                 src: {
@@ -2042,7 +2042,7 @@ angular.module('cardkitApp')
                   'Master Narrative Español': $scope.theme.images.MNes                  
                 },
                 width: true,
-              },                   
+              },                       
             }];
           }
         }, {
@@ -2183,7 +2183,7 @@ angular.module('cardkitApp')
               name: 'UNFPA Brand Extension Logos',
               type: 'image',
               width: function () {
-                return $scope.size.width * 0.45;
+                return $scope.size.width * 0.25;
               },
               controlsOrder: 20,
               height: function () {
@@ -2401,15 +2401,15 @@ angular.module('cardkitApp')
               name: 'UNFPA Brand Extension Logos',
               type: 'image',
               width: function () {
-                return $scope.size.width * 0.45;
+                return $scope.size.width * 0.15;
               },
               controlsOrder: 20,
               height: function () {
                 var h;
                 if (typeof this.width === 'string') {
-                  h = +this.width;
+                  h = +this.width * .5;
                 } else {
-                  h = this.width();
+                  h = this.width() *.5;
                 }
                 return h;
               },
@@ -2430,7 +2430,7 @@ angular.module('cardkitApp')
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
-              showHoverArea: false,
+              showHoverArea: true,
               defaultFilter: '',
               editable: {
                 src: {
@@ -2463,7 +2463,7 @@ angular.module('cardkitApp')
                   'Master Narrative Español': $scope.theme.images.MNes                  
                 },
                 width: true,
-              },                   
+              },                       
             }];
           }
         }, {
@@ -2697,15 +2697,15 @@ angular.module('cardkitApp')
               name: 'UNFPA Brand Extension Logos',
               type: 'image',
               width: function () {
-                return $scope.size.width * 0.45;
+                return $scope.size.width * 0.15;
               },
               controlsOrder: 20,
               height: function () {
                 var h;
                 if (typeof this.width === 'string') {
-                  h = +this.width;
+                  h = +this.width * .5;
                 } else {
-                  h = this.width();
+                  h = this.width() *.5;
                 }
                 return h;
               },
@@ -2726,7 +2726,7 @@ angular.module('cardkitApp')
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
-              showHoverArea: false,
+              showHoverArea: true,
               defaultFilter: '',
               editable: {
                 src: {
@@ -2759,7 +2759,7 @@ angular.module('cardkitApp')
                   'Master Narrative Español': $scope.theme.images.MNes                  
                 },
                 width: true,
-              },                   
+              },                       
             }];
           }
         }, {          
@@ -3019,15 +3019,15 @@ angular.module('cardkitApp')
               name: 'UNFPA Brand Extension Logos',
               type: 'image',
               width: function () {
-                return $scope.size.width * 0.45;
+                return $scope.size.width * 0.15;
               },
               controlsOrder: 20,
               height: function () {
                 var h;
                 if (typeof this.width === 'string') {
-                  h = +this.width;
+                  h = +this.width * .5;
                 } else {
-                  h = this.width();
+                  h = this.width() *.5;
                 }
                 return h;
               },
@@ -3048,7 +3048,7 @@ angular.module('cardkitApp')
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
-              showHoverArea: false,
+              showHoverArea: true,
               defaultFilter: '',
               editable: {
                 src: {
@@ -3081,7 +3081,7 @@ angular.module('cardkitApp')
                   'Master Narrative Español': $scope.theme.images.MNes                  
                 },
                 width: true,
-              },                   
+              },                       
             }];
           }
         }, {          
@@ -3734,15 +3734,15 @@ angular.module('cardkitApp')
               name: 'UNFPA Brand Extension Logos',
               type: 'image',
               width: function () {
-                return $scope.size.width * 0.45;
+                return $scope.size.width * 0.15;
               },
               controlsOrder: 20,
               height: function () {
                 var h;
                 if (typeof this.width === 'string') {
-                  h = +this.width;
+                  h = +this.width * .5;
                 } else {
-                  h = this.width();
+                  h = this.width() *.5;
                 }
                 return h;
               },
@@ -3763,7 +3763,7 @@ angular.module('cardkitApp')
               },
               preserveAspectRatio: 'xMinYMin meet',
               draggable: true,
-              showHoverArea: false,
+              showHoverArea: true,
               defaultFilter: '',
               editable: {
                 src: {
@@ -3796,7 +3796,7 @@ angular.module('cardkitApp')
                   'Master Narrative Español': $scope.theme.images.MNes                  
                 },
                 width: true,
-              },                   
+              },                       
             }];
           }
         }, {
